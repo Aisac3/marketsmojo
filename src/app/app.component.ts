@@ -8,7 +8,7 @@ import { SwitcherModule } from './switcher/switcher.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,VerdictPageComponent],
+  imports: [RouterOutlet,VerdictPageComponent,SwitcherPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

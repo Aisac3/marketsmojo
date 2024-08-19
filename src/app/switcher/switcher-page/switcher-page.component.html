@@ -1,1 +1,306 @@
-<p>switcher-page works!</p>
+<link
+  href="https://c.marketsmojo.com/mm-header/header.css?v=20240703143100"
+  rel="stylesheet"
+/>
+<link
+  href="https://c.marketsmojo.com/header_nav.css?v=20240703143100"
+  rel="stylesheet"
+/>
+<link
+  href="https://c.marketsmojo.com/mojoprofessional/verdict.css?v=20240703143100"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<app-swi-search></app-swi-search>
+<!-- <div class="listmojoarea_cio">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="searchhead">
+				<div class="row">
+					<div class="col-md-12" >
+						<div class="searchhead_new_1"  >
+							
+								<div class="wslogo"><img src="https://i.marketsmojo.com/switcher/switcher-logo2_new.png" /></div> 
+								<div class="swbetter" style="width: 100%; letter-spacing: 30%; font-size: 25px; ">A quick guide on how to replace your current stocks with mojo recommended stocks</div>
+							
+							
+						</div>
+					</div>
+				</div>
+				<div class="row">
+				
+					
+					
+
+					<div class="row">
+						<div class="col-md-7 d-flex align-items-center">
+						  <div class="searchheadnew">
+							<input
+							  type="text"
+							  class="form-control stiput"
+							  id="searchtext_home_desk"
+							  [(ngModel)]="searchTermsHome"
+							  (input)="onSearchChange()"
+							  [placeholder]="'Enter the stock to see if you should Switch'"
+							/>
+							<ul
+							  class="auto-search_mob auto-search-home"
+							  *ngIf="!drophide"
+							  [style.display]="drophide ? 'none' : 'block'"
+							>
+							  <li *ngFor="let entry of filteredSuggestions">
+								<a
+								  id="{{ entry.Id }}"
+								  class="specialeffects"
+								  href="javascript:void(0);"
+								  (click)="onSelectCompany(entry)"
+								>
+								  <span class="suggest-name">{{ entry.Company }}</span>
+								  <span *ngIf="entry.ScriptCode || entry.Symbol">
+									(
+									<span *ngIf="entry.ScriptCode">BSE - {{ entry.ScriptCode }}</span>
+									<span *ngIf="entry.ScriptCode && entry.Symbol"> | </span>
+									<span *ngIf="entry.Symbol">NSE - {{ entry.Symbol }}</span>
+									)
+								  </span>
+								</a>
+							  </li>
+							  <li *ngIf="filteredSuggestions.length === 0">
+								<a class="specialeffects" href="javascript:void(0)">
+								  <span class="suggest-name">No stocks results found</span>
+								</a>
+							  </li>
+							</ul>
+						  </div>
+						</div>
+						<div class="col-md-3">
+						  <div class="searchheadnew">
+							<input
+							  type="text"
+							  class="form-control stiput"
+							  id="searchtext_home_desk1"
+							  [(ngModel)]="switcherQuantity"
+							  (ngModelChange)="onQuantityChange()"
+							  autocomplete="off"
+							  placeholder="Quantity (Optional)"
+							/>
+						  </div>
+						</div>
+						<div class="col-md-2">
+						  <div class="mojotpbutton_new5">
+							<a href="javascript:void(0);" class="btn btn-default" (click)="runSwitcher()">RUN SWITCHER</a>
+						  </div>
+						</div>
+					  </div>
+					  
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="listmojoarea_cio">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="searchhead">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="searchhead_new_1">
+              <span class="wslogo">
+                <img
+                  src="https://i.marketsmojo.com/switcher/switcher-logo2_new.png"
+                  alt="Switcher Logo"
+                />
+              </span>
+            </div>
+            <div class="swbetter">
+              A quick guide on how to replace your current stocks with mojo
+              recommended stocks
+            </div>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="row" style="display: flex;">
+              <div class="col-md-7">
+                <div class="searchheadnew">
+                  <input
+                    type="text"
+                    class="form-control stiput"
+                    autocomplete="off"
+					id="searchtext_home_desk"
+                    [(ngModel)]="searchTermsHome"
+                    (ngModelChange)="onSearchChange()"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    placeholder="Enter the stock to see if you should Switch"
+                  />
+                  <ul
+                    class="auto-search_mob auto-search-home"
+                    [style.display]="drophide ? 'none' : 'block'"
+                  >
+                    <li *ngFor="let entry of filteredSuggestions">
+                      <a
+                        class="specialeffects"
+                        href="javascript:void(0);"
+                        (click)="onSelectCompany(entry)"
+                      >
+                        <span class="suggest-name">{{ entry.Company }}</span>
+                        <span *ngIf="entry.ScriptCode || entry.Symbol">
+                          (
+                          <span *ngIf="entry.ScriptCode"
+                            >BSE - {{ entry.ScriptCode }}</span
+                          >
+                          <span *ngIf="entry.ScriptCode && entry.Symbol"
+                            >|</span
+                          >
+                          <span *ngIf="entry.Symbol"
+                            >NSE - {{ entry.Symbol }}</span
+                          >
+                          )
+                        </span>
+                      </a>
+                    </li>
+                    <li *ngIf="filteredSuggestions.length === 0">
+                      <a class="specialeffects" href="javascript:void(0)">
+                        <span class="suggest-name"
+                          >No stocks results found</span
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="searchheadnew">
+                  <input
+                    type="text"
+                    class="form-control stiput"
+					id="searchtext_home_desk1"
+                    [(ngModel)]="switcherQuantity"
+                    (change)="onQuantityChange()"
+                    placeholder="Quantity (Optional)"
+                  />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="mojotpbutton_new5" (click)="runSwitcher()">
+                  <a href="javascript:void(0);">RUN SWITCHER</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wslanding">
+  <div class="listmojoarea_verdict">
+	<p class="mojohead2">ASK US ABOUT ANY STOCK YOU HOLD</p>
+    <div class="row" style="display: flex;">
+      <div class="col-md-6">
+       
+
+        <div class="anibanner_new no-web no-tab"></div>
+
+        <div class="bullet_cio2">
+          <ul>
+            <li>
+              Put your stock name along with quantity (optional) you hold, and
+              run SwitchER report
+            </li>
+            <li>
+              The option to switch to a mojo recommended stock is covered in the
+              report
+            </li>
+            <li>
+              We also give you 2 more options, and their reports are available
+              for your view
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6 no-mob no-tab2">
+        <div class="anibanner_new">
+          <div class="rotatebanner">
+            <img
+              src="https://i.marketsmojo.com/switcher/switcher_thumb_new1.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="listmojoarea_verdict2">
+    <div class="row" >
+      <div class="col-md-12">
+        <div class="banner-img">
+          <img src="https://i.marketsmojo.com/switcher/switcher_thumb2.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="listmojoarea_verdict3">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="mojohead4_1">HOW TO USE THIS SECTION</p>
+        <p></p>
+      </div>
+    </div>
+    <div class="row" style="display: flex">
+      <div class="col-md-12">
+        <p class="vertext">
+          <img
+            src="https://i.marketsmojo.com/mojoprofessional/verdict-icon1_new.png"
+          />
+        </p>
+        <p class="vertext2">
+          <strong>Input- Stock You Hold</strong> <br />Put your stock name along
+          with quantity (optional) you hold and run SwitchER report
+        </p>
+      </div>
+      <div class="col-md-12">
+        <p class="vertext">
+          <img src="https://i.marketsmojo.com/switcher/sw-icon3_new.png" />
+        </p>
+        <p class="vertext2">
+          <strong>More Options</strong> <br />We also give you 2 more options
+          and their reports are also available for your view
+        </p>
+      </div>
+      <div class="col-md-12">
+        <p class="vertext">
+          <img src="https://i.marketsmojo.com/switcher/sw-icon2_new.png" />
+        </p>
+        <p class="vertext2">
+          <strong>SwitchER</strong> <br />The option to switch to the mojo reco
+          stock is covered in the SwitchER report
+        </p>
+      </div>
+      <div class="col-md-12">
+        <p class="vertext">
+          <img
+            src="https://i.marketsmojo.com/mojoprofessional/verdict-icon3_new.png"
+          />
+        </p>
+        <p class="vertext2">
+          <strong>Download OR Email</strong> <br />You can download and also
+          email yourself all reports for your final decision making
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

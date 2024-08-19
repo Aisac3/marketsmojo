@@ -1,13 +1,4 @@
-// export  const DATA= {
-//   "Apple": [
-//     { "Company": "Apple", "ScriptCode": "12345", "Symbol": "EXMPL" },
-//     { "Company": "Test Corp", "ScriptCode": "67890", "Symbol": "TEST" }
-//   ],
-//   "data": [
-//     { "Company": "Example Co", "description": "Example Company Description", "details": "Example Company Details", "ScriptCode": "12345", "Symbol": "EXMPL" },
-//     { "Company": "Test Corp", "description": "Test Corporation Description", "details": "Test Corporation Details", "ScriptCode": "67890", "Symbol": "TEST" }
-//   ]
-// }
+
 export const DATA = {
   search: 
   [
