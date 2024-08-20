@@ -16,193 +16,98 @@
 />
 
 <app-swi-search></app-swi-search>
-<!-- <div class="listmojoarea_cio">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="searchhead">
-				<div class="row">
-					<div class="col-md-12" >
-						<div class="searchhead_new_1"  >
-							
-								<div class="wslogo"><img src="https://i.marketsmojo.com/switcher/switcher-logo2_new.png" /></div> 
-								<div class="swbetter" style="width: 100%; letter-spacing: 30%; font-size: 25px; ">A quick guide on how to replace your current stocks with mojo recommended stocks</div>
-							
-							
-						</div>
-					</div>
-				</div>
-				<div class="row">
+
 				
 					
 					
 
-					<div class="row">
-						<div class="col-md-7 d-flex align-items-center">
-						  <div class="searchheadnew">
-							<input
-							  type="text"
-							  class="form-control stiput"
-							  id="searchtext_home_desk"
-							  [(ngModel)]="searchTermsHome"
-							  (input)="onSearchChange()"
-							  [placeholder]="'Enter the stock to see if you should Switch'"
-							/>
-							<ul
-							  class="auto-search_mob auto-search-home"
-							  *ngIf="!drophide"
-							  [style.display]="drophide ? 'none' : 'block'"
-							>
-							  <li *ngFor="let entry of filteredSuggestions">
-								<a
-								  id="{{ entry.Id }}"
-								  class="specialeffects"
-								  href="javascript:void(0);"
-								  (click)="onSelectCompany(entry)"
+
+
+<div class="listmojoarea_cio">		
+	<div class="row">		
+		<div class="col-md-12">	
+			<div class="searchhead">
+				<div class="row" style="display: flex;">						
+					<div class="col-md-12">
+						<div class="searchhead_new_1"> 
+							<div class="wslogo">
+								<img src="https://i.marketsmojo.com/switcher/switcher-logo2_new.png" alt="Switcher Logo" />
+							</div> 
+							<div class="swbetter">
+								A quick guide on how to replace your current stocks with mojo recommended stocks
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">							
+						<div class="row" style="display: flex;">
+							<div class="col-md-7">
+								<div class="searchheadnew">
+									<input 
+										type="text" 
+										class="form-control stiput" 
+										autocomplete="off" 
+										[(ngModel)]="searchTermsHome" 
+										(ngModelChange)="onSearchChange()" 
+										(focus)="onFocus()" 
+										(blur)="onBlur()" 
+										placeholder="Enter the stock to see if you should Switch"
+									>
+									<ul class="auto-search_mob auto-search-home" [style.display]="drophide ? 'none' : 'block'">
+										<li *ngFor="let entry of filteredSuggestions">
+											<a 
+												class="specialeffects" 
+												href="javascript:void(0);" 
+												(click)="onSelectCompany(entry)"
+											>
+												<span class="suggest-name">{{ entry.Company }}</span>
+												<span *ngIf="entry.ScriptCode || entry.Symbol">
+													(
+													<span *ngIf="entry.ScriptCode">BSE - {{ entry.ScriptCode }}</span> 
+													<span *ngIf="entry.ScriptCode && entry.Symbol">|</span> 
+													<span *ngIf="entry.Symbol">NSE - {{ entry.Symbol }}</span>
+													)
+												</span>
+											</a>
+										</li>										  
+										<li *ngIf="filteredSuggestions.length === 0">
+											<a class="specialeffects" href="javascript:void(0)">
+												<span class="suggest-name">No stocks results found</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="searchheadnew">
+									<input 
+										type="text" 
+										class="form-control stiput" 
+										[(ngModel)]="switcherQuantity" 
+										(change)="onQuantityChange()" 
+										placeholder="Quantity (Optional)"
+									>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div 
+									class="mojotpbutton_new5" 
+									(click)="runSwitcher()"
 								>
-								  <span class="suggest-name">{{ entry.Company }}</span>
-								  <span *ngIf="entry.ScriptCode || entry.Symbol">
-									(
-									<span *ngIf="entry.ScriptCode">BSE - {{ entry.ScriptCode }}</span>
-									<span *ngIf="entry.ScriptCode && entry.Symbol"> | </span>
-									<span *ngIf="entry.Symbol">NSE - {{ entry.Symbol }}</span>
-									)
-								  </span>
-								</a>
-							  </li>
-							  <li *ngIf="filteredSuggestions.length === 0">
-								<a class="specialeffects" href="javascript:void(0)">
-								  <span class="suggest-name">No stocks results found</span>
-								</a>
-							  </li>
-							</ul>
-						  </div>
-						</div>
-						<div class="col-md-3">
-						  <div class="searchheadnew">
-							<input
-							  type="text"
-							  class="form-control stiput"
-							  id="searchtext_home_desk1"
-							  [(ngModel)]="switcherQuantity"
-							  (ngModelChange)="onQuantityChange()"
-							  autocomplete="off"
-							  placeholder="Quantity (Optional)"
-							/>
-						  </div>
-						</div>
-						<div class="col-md-2">
-						  <div class="mojotpbutton_new5">
-							<a href="javascript:void(0);" class="btn btn-default" (click)="runSwitcher()">RUN SWITCHER</a>
-						  </div>
-						</div>
-					  </div>
-					  
-
-
-
-
+									<a href="javascript:void(0);">RUN SWITCHER</a>								
+								</div>
+							</div>
+						</div>						
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div> -->
-
-<div class="listmojoarea_cio">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="searchhead">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="searchhead_new_1">
-              <span class="wslogo">
-                <img
-                  src="https://i.marketsmojo.com/switcher/switcher-logo2_new.png"
-                  alt="Switcher Logo"
-                />
-              </span>
-            </div>
-            <div class="swbetter">
-              A quick guide on how to replace your current stocks with mojo
-              recommended stocks
-            </div>
-          </div>
-        </div>
-        <div class="row" >
-          <div class="col-md-12">
-            <div class="row" style="display: flex;">
-              <div class="col-md-7">
-                <div class="searchheadnew">
-                  <input
-                    type="text"
-                    class="form-control stiput"
-                    autocomplete="off"
-					id="searchtext_home_desk"
-                    [(ngModel)]="searchTermsHome"
-                    (ngModelChange)="onSearchChange()"
-                    (focus)="onFocus()"
-                    (blur)="onBlur()"
-                    placeholder="Enter the stock to see if you should Switch"
-                  />
-                  <ul
-                    class="auto-search_mob auto-search-home"
-                    [style.display]="drophide ? 'none' : 'block'"
-                  >
-                    <li *ngFor="let entry of filteredSuggestions">
-                      <a
-                        class="specialeffects"
-                        href="javascript:void(0);"
-                        (click)="onSelectCompany(entry)"
-                      >
-                        <span class="suggest-name">{{ entry.Company }}</span>
-                        <span *ngIf="entry.ScriptCode || entry.Symbol">
-                          (
-                          <span *ngIf="entry.ScriptCode"
-                            >BSE - {{ entry.ScriptCode }}</span
-                          >
-                          <span *ngIf="entry.ScriptCode && entry.Symbol"
-                            >|</span
-                          >
-                          <span *ngIf="entry.Symbol"
-                            >NSE - {{ entry.Symbol }}</span
-                          >
-                          )
-                        </span>
-                      </a>
-                    </li>
-                    <li *ngIf="filteredSuggestions.length === 0">
-                      <a class="specialeffects" href="javascript:void(0)">
-                        <span class="suggest-name"
-                          >No stocks results found</span
-                        >
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="searchheadnew">
-                  <input
-                    type="text"
-                    class="form-control stiput"
-					id="searchtext_home_desk1"
-                    [(ngModel)]="switcherQuantity"
-                    (change)="onQuantityChange()"
-                    placeholder="Quantity (Optional)"
-                  />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="mojotpbutton_new5" (click)="runSwitcher()">
-                  <a href="javascript:void(0);">RUN SWITCHER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	</div>	
 </div>
+
+
+
 
 <div class="wslanding">
   <div class="listmojoarea_verdict">
